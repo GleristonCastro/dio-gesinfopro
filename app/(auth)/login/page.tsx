@@ -37,7 +37,7 @@ export default function LoginPage() {
       if (result.error) {
         toast.error("Email ou senha incorretos");
       } else {
-        toast.success("✅ Login realizado com sucesso!");
+        toast.success("Login realizado com sucesso!");
         router.push("/dashboard");
       }
     } catch (err) {
