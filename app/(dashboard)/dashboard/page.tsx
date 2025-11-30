@@ -124,8 +124,8 @@ export default async function DashboardPage() {
         </div>
 
         {/* Metas Ativas - 1 coluna */}
-        <Card className="bg-white dark:bg-linear-to-br dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-gray-200 dark:border-gray-800/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
-          <CardHeader className="border-b border-gray-200 dark:border-gray-800/50 bg-gray-50 dark:bg-linear-to-r dark:from-purple-600/10 dark:to-pink-600/10 dark:from-purple-500/20 dark:to-pink-500/20">
+        <Card className="bg-gradient-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-white/20 dark:border-gray-800/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
+          <CardHeader className="border-b border-white/20 dark:border-gray-800/50 bg-gradient-to-r from-purple-600/10 to-pink-600/10 dark:from-purple-500/20 dark:to-pink-500/20">
             <CardTitle className="flex items-center gap-2">
               <span className="text-purple-600 dark:text-purple-400">🎯</span>
               <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
@@ -145,8 +145,8 @@ export default async function DashboardPage() {
       </div>
 
       {/* Transações Recentes - card largo */}
-      <Card className="bg-white dark:bg-linear-to-br dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-gray-200 dark:border-gray-800/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
-        <CardHeader className="border-b border-gray-200 dark:border-gray-800/50 bg-gray-50 dark:bg-linear-to-r dark:from-blue-600/10 dark:to-cyan-600/10 dark:from-blue-500/20 dark:to-cyan-500/20">
+      <Card className="bg-linear-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-white/20 dark:border-gray-800/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
+        <CardHeader className="border-b border-white/20 dark:border-gray-800/50 bg-linear-to-r from-blue-600/10 to-cyan-600/10 dark:from-blue-500/20 dark:to-cyan-500/20">
           <CardTitle className="flex items-center gap-2">
             <span className="text-blue-600 dark:text-blue-400">💳</span>
             <span className="bg-linear-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent">
