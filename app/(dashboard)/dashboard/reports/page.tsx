@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { StatCard } from "@/components/ui/stat-card";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   LineChart,
   Line,
@@ -21,9 +23,10 @@ import {
 import {
   TrendingUp,
   DollarSign,
+  TrendingDown,
+  Wallet,
   PieChartIcon,
   Percent,
-  Loader2,
 } from "lucide-react";
 import { FinancialInsights } from "@/components/reports/financial-insights";
 
@@ -104,8 +107,38 @@ export default function ReportsPage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+      <div className="container mx-auto p-6 space-y-6">
+        {/* Header Skeleton */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="space-y-2">
+            <Skeleton className="h-10 w-64" />
+            <Skeleton className="h-4 w-48" />
+          </div>
+          <div className="flex gap-2">
+            <Skeleton className="h-11 w-24" />
+            <Skeleton className="h-11 w-24" />
+            <Skeleton className="h-11 w-24" />
+            <Skeleton className="h-11 w-24" />
+          </div>
+        </div>
+
+        {/* StatCards Skeleton */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Skeleton className="h-32" />
+          <Skeleton className="h-32" />
+          <Skeleton className="h-32" />
+          <Skeleton className="h-32" />
+        </div>
+
+        {/* Insights Skeleton */}
+        <Skeleton className="h-48" />
+
+        {/* Charts Skeleton */}
+        <Skeleton className="h-80" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Skeleton className="h-80" />
+          <Skeleton className="h-80" />
+        </div>
       </div>
     );
   }
@@ -120,119 +153,102 @@ export default function ReportsPage() {
 
   return (
     <div className="container mx-auto p-6 space-y-6">
-      {/* Header com filtros */}
+      {/* Header com gradiente moderno */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div className="min-w-0">
-          <h1 className="text-2xl sm:text-3xl font-bold">Relatórios</h1>
-          <p className="text-sm sm:text-base text-muted-foreground">
-            Análise financeira detalhada
+        <div className="space-y-2">
+          <h1 className="text-3xl sm:text-4xl font-bold bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+            Relatórios Financeiros
+          </h1>
+          <p className="text-muted-foreground">
+            Análise detalhada e insights inteligentes
           </p>
         </div>
         <div className="flex flex-wrap gap-2 w-full sm:w-auto">
           <Button
             variant={period === 1 ? "default" : "outline"}
             onClick={() => setPeriod(1)}
-            className="min-h-11 flex-1 sm:flex-none"
+            size="sm"
+            className="flex-1 sm:flex-none bg-white/60 dark:bg-gray-800/50 border-white/20 dark:border-gray-700/50 hover:bg-white/80 dark:hover:bg-gray-800/70 backdrop-blur-sm hover:shadow-md transition-all"
           >
             Mês atual
           </Button>
           <Button
             variant={period === 3 ? "default" : "outline"}
             onClick={() => setPeriod(3)}
-            className="min-h-11 flex-1 sm:flex-none"
+            size="sm"
+            className="flex-1 sm:flex-none bg-white/60 dark:bg-gray-800/50 border-white/20 dark:border-gray-700/50 hover:bg-white/80 dark:hover:bg-gray-800/70 backdrop-blur-sm hover:shadow-md transition-all"
           >
             3 meses
           </Button>
           <Button
             variant={period === 6 ? "default" : "outline"}
             onClick={() => setPeriod(6)}
-            className="min-h-11 flex-1 sm:flex-none"
+            size="sm"
+            className="flex-1 sm:flex-none bg-white/60 dark:bg-gray-800/50 border-white/20 dark:border-gray-700/50 hover:bg-white/80 dark:hover:bg-gray-800/70 backdrop-blur-sm hover:shadow-md transition-all"
           >
             6 meses
           </Button>
           <Button
             variant={period === 12 ? "default" : "outline"}
             onClick={() => setPeriod(12)}
-            className="min-h-11 flex-1 sm:flex-none"
+            size="sm"
+            className="flex-1 sm:flex-none bg-white/60 dark:bg-gray-800/50 border-white/20 dark:border-gray-700/50 hover:bg-white/80 dark:hover:bg-gray-800/70 backdrop-blur-sm hover:shadow-md transition-all"
           >
             Ano
           </Button>
         </div>
       </div>
 
-      {/* Cards de métricas */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Maior Despesa</CardTitle>
-            <DollarSign className="h-4 w-4 text-red-500" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-red-600">
-              {data.metrics.largestExpense
-                ? formatCurrency(data.metrics.largestExpense.amount)
-                : "N/A"}
-            </div>
-            {data.metrics.largestExpense && (
-              <p className="text-xs text-gray-500 mt-1">
-                {data.metrics.largestExpense.description} -{" "}
-                {data.metrics.largestExpense.category}
-              </p>
-            )}
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Categoria Mais Gastada
-            </CardTitle>
-            <PieChartIcon className="h-4 w-4 text-blue-500" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-blue-600">
-              {data.metrics.topCategory
-                ? formatCurrency(data.metrics.topCategory.value)
-                : "N/A"}
-            </div>
-            {data.metrics.topCategory && (
-              <p className="text-xs text-gray-500 mt-1">
-                {data.metrics.topCategory.name}
-              </p>
-            )}
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Taxa de Economia
-            </CardTitle>
-            <Percent className="h-4 w-4 text-green-500" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-green-600">
-              {data.metrics.savingsRate}%
-            </div>
-            <p className="text-xs text-gray-500 mt-1">
-              Do que você recebeu no período
-            </p>
-          </CardContent>
-        </Card>
+      {/* StatCards principais */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <StatCard
+          title="Total de Receitas"
+          value={data.metrics.totalIncome}
+          icon={TrendingUp}
+          color="green"
+          format="currency"
+          description="No período selecionado"
+        />
+        <StatCard
+          title="Total de Despesas"
+          value={data.metrics.totalExpense}
+          icon={TrendingDown}
+          color="red"
+          format="currency"
+          description="No período selecionado"
+        />
+        <StatCard
+          title="Taxa de Economia"
+          value={data.metrics.savingsRate}
+          icon={Percent}
+          color="purple"
+          format="percent"
+          description="Do que você recebeu"
+        />
+        <StatCard
+          title="Saldo Atual"
+          value={data.metrics.currentBalance}
+          icon={Wallet}
+          color="blue"
+          format="currency"
+          description="Seu saldo disponível"
+        />
       </div>
 
       {/* Insights Financeiros */}
       <FinancialInsights months={period} />
 
       {/* Gráfico de evolução do saldo */}
-      <Card>
-        <CardHeader>
+      <Card className="bg-gradient-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-white/20 dark:border-gray-800/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
+        <CardHeader className="border-b border-white/20 dark:border-gray-800/50 bg-gradient-to-r from-blue-600/10 to-cyan-600/10 dark:from-blue-500/20 dark:to-cyan-500/20">
           <CardTitle className="flex items-center gap-2">
-            <TrendingUp className="h-5 w-5 text-blue-500" />
-            Evolução do Saldo
+            <TrendingUp className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+            <span className="bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent">
+              Evolução do Saldo
+            </span>
           </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="pt-6">
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={data.balanceEvolution}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -265,11 +281,13 @@ export default function ReportsPage() {
       {/* Gráficos lado a lado */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Receitas vs Despesas */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Receitas vs Despesas</CardTitle>
+        <Card className="bg-gradient-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-white/20 dark:border-gray-800/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
+          <CardHeader className="border-b border-white/20 dark:border-gray-800/50 bg-gradient-to-r from-green-600/10 to-red-600/10 dark:from-green-500/20 dark:to-red-500/20">
+            <CardTitle className="bg-gradient-to-r from-green-600 to-red-600 dark:from-green-400 dark:to-red-400 bg-clip-text text-transparent">
+              Receitas vs Despesas
+            </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-6">
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={data.incomeVsExpense}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -295,11 +313,13 @@ export default function ReportsPage() {
         </Card>
 
         {/* Distribuição por Categoria */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Distribuição por Categoria</CardTitle>
+        <Card className="bg-gradient-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-white/20 dark:border-gray-800/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
+          <CardHeader className="border-b border-white/20 dark:border-gray-800/50 bg-gradient-to-r from-purple-600/10 to-pink-600/10 dark:from-purple-500/20 dark:to-pink-500/20">
+            <CardTitle className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+              Distribuição por Categoria
+            </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-6">
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
                 <Pie
