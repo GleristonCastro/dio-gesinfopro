@@ -71,12 +71,12 @@ export function TransactionForm({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button>
+        <Button className="bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200">
           <Plus className="h-4 w-4 mr-2" />
           Nova Transação
         </Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="bg-linear-to-br from-white/95 to-gray-50/90 dark:from-gray-900/95 dark:to-gray-950/90 backdrop-blur-xl border-white/20 dark:border-gray-800/50">
         <DialogHeader>
           <DialogTitle>Adicionar Transação</DialogTitle>
         </DialogHeader>
@@ -89,6 +89,7 @@ export function TransactionForm({
                 setFormData({ ...formData, description: e.target.value })
               }
               placeholder="Ex: Almoço no restaurante"
+              className="bg-gray-50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-700/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all duration-200"
               required
             />
           </div>
@@ -103,6 +104,7 @@ export function TransactionForm({
                 setFormData({ ...formData, amount: e.target.value })
               }
               placeholder="0.00"
+              className="bg-gray-50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-700/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all duration-200"
               required
             />
           </div>
@@ -117,7 +119,7 @@ export function TransactionForm({
                   type: e.target.value as "INCOME" | "EXPENSE",
                 })
               }
-              className="w-full h-10 rounded-md border border-input bg-background px-3 py-2"
+              className="w-full h-10 rounded-md border bg-gray-50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-700/50 backdrop-blur-sm px-3 py-2 focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all duration-200"
               required
             >
               <option value="EXPENSE">Despesa</option>
@@ -132,7 +134,7 @@ export function TransactionForm({
               onChange={(e) =>
                 setFormData({ ...formData, categoryId: e.target.value })
               }
-              className="w-full h-10 rounded-md border border-input bg-background px-3 py-2"
+              className="w-full h-10 rounded-md border bg-gray-50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-700/50 backdrop-blur-sm px-3 py-2 focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all duration-200"
               required
             >
               <option value="">Selecione uma categoria</option>
@@ -152,6 +154,7 @@ export function TransactionForm({
               onChange={(e) =>
                 setFormData({ ...formData, date: e.target.value })
               }
+              className="bg-gray-50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-700/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all duration-200"
               required
             />
           </div>
