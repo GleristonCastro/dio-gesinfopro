@@ -8,6 +8,27 @@ import {
   ASSISTANT_SYSTEM_PROMPT,
 } from "@/lib/gemini/prompts";
 
+// Função helper para verificar se a meta atingiu o objetivo e atualizar o status
+async function checkAndUpdateGoalStatus(goalId: string) {
+  const goal = await prisma.goal.findUnique({
+    where: { id: goalId },
+  });
+
+  if (!goal || goal.status === "COMPLETED") {
+    return goal;
+  }
+
+  // Se o valor atual atingiu ou ultrapassou o objetivo, marcar como concluída
+  if (Number(goal.currentAmount) >= Number(goal.targetAmount)) {
+    return await prisma.goal.update({
+      where: { id: goalId },
+      data: { status: "COMPLETED" },
+    });
+  }
+
+  return goal;
+}
+
 export async function POST(req: NextRequest) {
   try {
     const session = await auth.api.getSession({ headers: req.headers });
@@ -140,6 +161,9 @@ export async function POST(req: NextRequest) {
                   },
                 },
               });
+
+              // Verificar se a meta foi concluída
+              const updatedGoal = await checkAndUpdateGoalStatus(goal.id);
 
               const progress = (reservationAmount / targetAmount) * 100;
 
@@ -476,17 +500,29 @@ export async function POST(req: NextRequest) {
           },
         });
 
+        // Verificar se a meta foi concluída
+        const updatedGoal = await checkAndUpdateGoalStatus(goal.id);
+        const isCompleted = updatedGoal?.status === "COMPLETED";
+
         const progress =
           ((Number(goal.currentAmount) + amount) / Number(goal.targetAmount)) *
           100;
 
-        const responseMessage = `✅ Perfeito! Reservei R$ ${amount.toFixed(
-          2
-        )} para sua meta "${goal.name}".\n\n🎯 Progresso: ${progress.toFixed(
-          0
-        )}% • R$ ${(Number(goal.currentAmount) + amount).toFixed(
-          2
-        )} de R$ ${Number(goal.targetAmount).toFixed(2)}\n\nContinue assim! 💪`;
+        const responseMessage = isCompleted
+          ? `🎉 PARABÉNS! Você concluiu sua meta "${
+              goal.name
+            }"! 🎊\n\n✅ Meta alcançada: R$ ${(
+              Number(goal.currentAmount) + amount
+            ).toFixed(2)} de R$ ${Number(goal.targetAmount).toFixed(
+              2
+            )}\n\n🏆 Objetivo conquistado! Continue assim! 💪`
+          : `✅ Perfeito! Reservei R$ ${amount.toFixed(2)} para sua meta "${
+              goal.name
+            }".\n\n🎯 Progresso: ${progress.toFixed(0)}% • R$ ${(
+              Number(goal.currentAmount) + amount
+            ).toFixed(2)} de R$ ${Number(goal.targetAmount).toFixed(
+              2
+            )}\n\nContinue assim! 💪`;
 
         await prisma.chatMessage.create({
           data: {
@@ -630,6 +666,9 @@ export async function POST(req: NextRequest) {
               },
             },
           });
+
+          // Verificar se a meta foi concluída
+          await checkAndUpdateGoalStatus(linkedGoal.id);
         }
 
         const responseMessage = `✅ Entendi! Registrei ${
