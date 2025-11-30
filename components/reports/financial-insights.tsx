@@ -54,14 +54,16 @@ export function FinancialInsights({ months }: FinancialInsightsProps) {
 
   if (loading) {
     return (
-      <Card>
-        <CardHeader>
+      <Card className="bg-gradient-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-white/20 dark:border-gray-800/50 shadow-2xl">
+        <CardHeader className="border-b border-white/20 dark:border-gray-800/50 bg-gradient-to-r from-purple-600/10 to-blue-600/10 dark:from-purple-500/20 dark:to-blue-500/20">
           <CardTitle className="flex items-center gap-2">
-            <Sparkles className="h-5 w-5 text-purple-500" />
-            Insights Financeiros
+            <Sparkles className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+            <span className="bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent">
+              Insights Financeiros
+            </span>
           </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="pt-6">
           <div className="flex items-center justify-center py-8">
             <Loader2 className="h-8 w-8 animate-spin text-purple-500" />
             <span className="ml-3 text-gray-600 dark:text-gray-400">
@@ -75,14 +77,16 @@ export function FinancialInsights({ months }: FinancialInsightsProps) {
 
   if (error || !insights) {
     return (
-      <Card>
-        <CardHeader>
+      <Card className="bg-gradient-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-white/20 dark:border-gray-800/50 shadow-2xl">
+        <CardHeader className="border-b border-white/20 dark:border-gray-800/50 bg-gradient-to-r from-purple-600/10 to-blue-600/10 dark:from-purple-500/20 dark:to-blue-500/20">
           <CardTitle className="flex items-center gap-2">
-            <Sparkles className="h-5 w-5 text-purple-500" />
-            Insights Financeiros
+            <Sparkles className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+            <span className="bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent">
+              Insights Financeiros
+            </span>
           </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="pt-6">
           <p className="text-center text-gray-500 py-8">
             Não foi possível gerar insights no momento. Tente novamente mais
             tarde.
@@ -93,11 +97,13 @@ export function FinancialInsights({ months }: FinancialInsightsProps) {
   }
 
   return (
-    <Card className="border-purple-200 dark:border-purple-800">
-      <CardHeader className="bg-linear-to-r from-purple-50 to-blue-50 dark:from-purple-950 dark:to-blue-950">
+    <Card className="bg-gradient-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-white/20 dark:border-gray-800/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
+      <CardHeader className="border-b border-white/20 dark:border-gray-800/50 bg-gradient-to-r from-purple-600/10 to-blue-600/10 dark:from-purple-500/20 dark:to-blue-500/20">
         <CardTitle className="flex items-center gap-2">
           <Sparkles className="h-5 w-5 text-purple-600 dark:text-purple-400" />
-          Insights Financeiros Inteligentes
+          <span className="bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent">
+            Insights Financeiros Inteligentes
+          </span>
         </CardTitle>
         <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
           Análise automática gerada por IA
