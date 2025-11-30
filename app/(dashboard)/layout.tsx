@@ -103,10 +103,10 @@ function DashboardShell({
       <aside
         role="complementary"
         aria-label="Barra lateral de navegação"
-        className="fixed left-0 top-0 z-40 h-screen w-64 bg-white dark:bg-linear-to-b dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border-r border-gray-200 dark:border-gray-800/50 shadow-xl hidden lg:block"
+        className="fixed left-0 top-0 z-40 h-screen w-64 bg-linear-to-b from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border-r border-white/20 dark:border-gray-800/50 shadow-2xl hidden lg:block"
       >
         <div className="flex h-full flex-col">
-          <div className="flex h-14 items-center gap-2 border-b border-gray-200 dark:border-gray-800/50 px-4 bg-gray-50 dark:bg-linear-to-r dark:from-blue-500/20 dark:to-purple-500/20">
+          <div className="flex h-14 items-center gap-2 border-b border-white/20 dark:border-gray-800/50 px-4 bg-linear-to-r from-blue-600/10 to-purple-600/10 dark:from-blue-500/20 dark:to-purple-500/20">
             <Lottie
               animationData={logoAnimation}
               loop={true}
@@ -169,8 +169,8 @@ function DashboardShell({
               );
             })}
           </nav>
-          <div className="border-t border-gray-200 dark:border-gray-800/50 p-4 bg-gray-50 dark:bg-linear-to-t dark:from-gray-900/50">
-            <div className="flex items-center gap-3 mb-3 p-2 rounded-lg bg-gray-100 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50">
+          <div className="border-t border-white/20 dark:border-gray-800/50 p-4 bg-linear-to-t from-gray-100/50 to-transparent dark:from-gray-900/50">
+            <div className="flex items-center gap-3 mb-3 p-2 rounded-lg bg-white/60 dark:bg-gray-800/50 backdrop-blur-sm border border-white/20 dark:border-gray-700/50">
               <div className="flex h-9 w-9 items-center justify-center rounded-full bg-linear-to-br from-blue-500 to-purple-600 text-white shadow-md font-semibold">
                 {session.user?.name?.[0] || "U"}
               </div>
@@ -186,7 +186,7 @@ function DashboardShell({
             <Button
               variant="outline"
               size="sm"
-              className="w-full bg-white dark:bg-gray-800/50 border-gray-300 dark:border-gray-700/50 hover:bg-gray-50 dark:hover:bg-gray-800/70 backdrop-blur-sm hover:shadow-md transition-all"
+              className="w-full bg-white/60 dark:bg-gray-800/50 border-white/20 dark:border-gray-700/50 hover:bg-white/80 dark:hover:bg-gray-800/70 backdrop-blur-sm hover:shadow-md transition-all"
               onClick={() => signOut()}
             >
               <LogOut className="h-4 w-4 mr-2" aria-hidden="true" />
