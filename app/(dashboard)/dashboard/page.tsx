@@ -24,6 +24,9 @@ import { headers } from "next/headers";
 import { prisma } from "@/lib/prisma";
 import { Suspense } from "react";
 
+// Mark page as dynamic since it uses authentication
+export const dynamic = "force-dynamic";
+
 async function getSummary() {
   try {
     const session = await auth.api.getSession({
@@ -89,14 +92,19 @@ export default async function DashboardPage() {
     await getSummary();
 
   return (
-    <PageTransition className="space-y-8">
+    <PageTransition className="space-y-6">
       <FadeIn>
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
-          <p className="text-muted-foreground">Visão geral das suas finanças</p>
+        <div className="space-y-2">
+          <h1 className="text-3xl sm:text-4xl font-bold bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+            Dashboard
+          </h1>
+          <p className="text-sm sm:text-base text-muted-foreground">
+            Visão geral e controle total das suas finanças
+          </p>
         </div>
       </FadeIn>
 
+      {/* StatCards principais */}
       <Suspense fallback={<BalanceCardsSkeleton />}>
         <BalanceCards
           totalIncome={totalIncome}
@@ -106,45 +114,55 @@ export default async function DashboardPage() {
         />
       </Suspense>
 
-      <div className="grid gap-4 lg:grid-cols-2">
-        {/* Chat Widget */}
-        <div className="lg:col-span-1">
+      {/* Grid principal: Chat + Widgets laterais */}
+      <div className="grid gap-6 lg:grid-cols-3">
+        {/* Chat Widget - ocupa 2 colunas */}
+        <div className="lg:col-span-2">
           <Suspense fallback={<ChatWidgetSkeleton />}>
             <ChatWidget compact />
           </Suspense>
         </div>
 
-        {/* Cards laterais */}
-        <div className="space-y-4">
-          <Card>
-            <CardHeader>
-              <CardTitle>Transações Recentes</CardTitle>
-              <CardDescription>
-                Suas últimas movimentações financeiras
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Suspense fallback={<RecentTransactionsSkeleton />}>
-                <RecentTransactions />
-              </Suspense>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Metas Ativas</CardTitle>
-              <CardDescription>
-                Acompanhe o progresso das suas metas
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Suspense fallback={<ActiveGoalsSkeleton />}>
-                <ActiveGoals />
-              </Suspense>
-            </CardContent>
-          </Card>
-        </div>
+        {/* Metas Ativas - 1 coluna */}
+        <Card className="bg-white dark:bg-linear-to-br dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-gray-200 dark:border-gray-800/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
+          <CardHeader className="border-b border-gray-200 dark:border-gray-800/50 bg-gray-50 dark:bg-linear-to-r dark:from-purple-600/10 dark:to-pink-600/10 dark:from-purple-500/20 dark:to-pink-500/20">
+            <CardTitle className="flex items-center gap-2">
+              <span className="text-purple-600 dark:text-purple-400">🎯</span>
+              <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+                Metas Ativas
+              </span>
+            </CardTitle>
+            <CardDescription>
+              Acompanhe o progresso das suas metas
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="pt-6">
+            <Suspense fallback={<ActiveGoalsSkeleton />}>
+              <ActiveGoals />
+            </Suspense>
+          </CardContent>
+        </Card>
       </div>
+
+      {/* Transações Recentes - card largo */}
+      <Card className="bg-white dark:bg-linear-to-br dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-gray-200 dark:border-gray-800/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
+        <CardHeader className="border-b border-gray-200 dark:border-gray-800/50 bg-gray-50 dark:bg-linear-to-r dark:from-blue-600/10 dark:to-cyan-600/10 dark:from-blue-500/20 dark:to-cyan-500/20">
+          <CardTitle className="flex items-center gap-2">
+            <span className="text-blue-600 dark:text-blue-400">💳</span>
+            <span className="bg-linear-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent">
+              Transações Recentes
+            </span>
+          </CardTitle>
+          <CardDescription>
+            Suas últimas movimentações financeiras
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="pt-6">
+          <Suspense fallback={<RecentTransactionsSkeleton />}>
+            <RecentTransactions />
+          </Suspense>
+        </CardContent>
+      </Card>
     </PageTransition>
   );
 }
