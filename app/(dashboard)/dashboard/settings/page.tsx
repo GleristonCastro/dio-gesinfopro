@@ -149,98 +149,135 @@ export default function SettingsPage() {
 
   return (
     <div className="container mx-auto p-6 space-y-6">
-      <h1 className="text-3xl font-bold">Configurações</h1>
+      {/* Header com gradiente moderno */}
+      <div className="space-y-2">
+        <h1 className="text-3xl sm:text-4xl font-bold bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+          Configurações
+        </h1>
+        <p className="text-sm sm:text-base text-muted-foreground">
+          Gerencie suas preferências e informações pessoais
+        </p>
+      </div>
 
-      {/* Aparência */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Palette className="h-5 w-5" aria-hidden="true" />
-            Aparência
-          </CardTitle>
-          <CardDescription>
-            Personalize a aparência do aplicativo
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          {/* Tema (Light/Dark) */}
-          <div>
-            <label className="text-sm font-medium mb-3 block">Tema</label>
-            <ThemeSelector />
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Perfil */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <User className="h-5 w-5" aria-hidden="true" />
-            Perfil
-          </CardTitle>
-          <CardDescription>Atualize suas informações pessoais</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleUpdateProfile} className="space-y-4">
-            <div>
-              <label htmlFor="profile-name" className="text-sm font-medium">
-                Nome
-              </label>
-              <Input
-                id="profile-name"
-                value={profileForm.name}
-                onChange={(e) =>
-                  setProfileForm({ ...profileForm, name: e.target.value })
-                }
-                placeholder="Seu nome"
-                required
+      {/* Grid de 2 colunas em desktop */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Aparência */}
+        <Card className="bg-gradient-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-white/20 dark:border-gray-800/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
+          <CardHeader className="border-b border-white/20 dark:border-gray-800/50 bg-gradient-to-r from-purple-600/10 to-pink-600/10 dark:from-purple-500/20 dark:to-pink-500/20">
+            <CardTitle className="flex items-center gap-2">
+              <Palette
+                className="h-5 w-5 text-purple-600 dark:text-purple-400"
+                aria-hidden="true"
               />
-            </div>
-
+              <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+                Aparência
+              </span>
+            </CardTitle>
+            <CardDescription>
+              Personalize a aparência do aplicativo
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6 pt-6">
+            {/* Tema (Light/Dark) */}
             <div>
-              <label htmlFor="profile-email" className="text-sm font-medium">
-                Email
-              </label>
-              <Input
-                id="profile-email"
-                type="email"
-                value={profileForm.email}
-                onChange={(e) =>
-                  setProfileForm({ ...profileForm, email: e.target.value })
-                }
-                placeholder="seu@email.com"
-                required
-              />
+              <label className="text-sm font-medium mb-3 block">Tema</label>
+              <ThemeSelector />
             </div>
+          </CardContent>
+        </Card>
 
-            <Button type="submit" disabled={loading.profile}>
-              {loading.profile ? (
-                <>
-                  <Loader2
-                    className="h-4 w-4 mr-2 animate-spin"
-                    aria-hidden="true"
-                  />
-                  Salvando...
-                </>
-              ) : (
-                "Salvar alterações"
-              )}
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
+        {/* Perfil */}
+        <Card className="bg-gradient-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-white/20 dark:border-gray-800/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
+          <CardHeader className="border-b border-white/20 dark:border-gray-800/50 bg-gradient-to-r from-blue-600/10 to-cyan-600/10 dark:from-blue-500/20 dark:to-cyan-500/20">
+            <CardTitle className="flex items-center gap-2">
+              <User
+                className="h-5 w-5 text-blue-600 dark:text-blue-400"
+                aria-hidden="true"
+              />
+              <span className="bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent">
+                Perfil
+              </span>
+            </CardTitle>
+            <CardDescription>
+              Atualize suas informações pessoais
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="pt-6">
+            <form onSubmit={handleUpdateProfile} className="space-y-4">
+              <div>
+                <label htmlFor="profile-name" className="text-sm font-medium">
+                  Nome
+                </label>
+                <Input
+                  id="profile-name"
+                  value={profileForm.name}
+                  onChange={(e) =>
+                    setProfileForm({ ...profileForm, name: e.target.value })
+                  }
+                  placeholder="Seu nome"
+                  required
+                  className="bg-white/60 dark:bg-gray-800/50 border-white/20 dark:border-gray-700/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50"
+                />
+              </div>
 
-      {/* Segurança */}
-      <Card>
-        <CardHeader>
+              <div>
+                <label htmlFor="profile-email" className="text-sm font-medium">
+                  Email
+                </label>
+                <Input
+                  id="profile-email"
+                  type="email"
+                  value={profileForm.email}
+                  onChange={(e) =>
+                    setProfileForm({ ...profileForm, email: e.target.value })
+                  }
+                  placeholder="seu@email.com"
+                  required
+                  className="bg-white/60 dark:bg-gray-800/50 border-white/20 dark:border-gray-700/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50"
+                />
+              </div>
+
+              <Button
+                type="submit"
+                disabled={loading.profile}
+                className="w-full sm:w-auto"
+              >
+                {loading.profile ? (
+                  <>
+                    <Loader2
+                      className="h-4 w-4 mr-2 animate-spin"
+                      aria-hidden="true"
+                    />
+                    Salvando...
+                  </>
+                ) : (
+                  "Salvar alterações"
+                )}
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Segurança - card largo */}
+      <Card className="bg-gradient-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-white/20 dark:border-gray-800/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
+        <CardHeader className="border-b border-white/20 dark:border-gray-800/50 bg-gradient-to-r from-orange-600/10 to-amber-600/10 dark:from-orange-500/20 dark:to-amber-500/20">
           <CardTitle className="flex items-center gap-2">
-            <Lock className="h-5 w-5" aria-hidden="true" />
-            Segurança
+            <Lock
+              className="h-5 w-5 text-orange-600 dark:text-orange-400"
+              aria-hidden="true"
+            />
+            <span className="bg-gradient-to-r from-orange-600 to-amber-600 dark:from-orange-400 dark:to-amber-400 bg-clip-text text-transparent">
+              Segurança
+            </span>
           </CardTitle>
           <CardDescription>Altere sua senha de acesso</CardDescription>
         </CardHeader>
-        <CardContent>
-          <form onSubmit={handleChangePassword} className="space-y-4">
+        <CardContent className="pt-6">
+          <form
+            onSubmit={handleChangePassword}
+            className="grid grid-cols-1 md:grid-cols-3 gap-4"
+          >
             <div>
               <label htmlFor="current-password" className="text-sm font-medium">
                 Senha atual
@@ -257,6 +294,7 @@ export default function SettingsPage() {
                 }
                 placeholder="••••••••"
                 required
+                className="bg-white/60 dark:bg-gray-800/50 border-white/20 dark:border-gray-700/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50"
               />
             </div>
 
@@ -277,6 +315,7 @@ export default function SettingsPage() {
                 placeholder="••••••••"
                 required
                 minLength={6}
+                className="bg-white/60 dark:bg-gray-800/50 border-white/20 dark:border-gray-700/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50"
               />
             </div>
 
@@ -297,38 +336,46 @@ export default function SettingsPage() {
                 placeholder="••••••••"
                 required
                 minLength={6}
+                className="bg-white/60 dark:bg-gray-800/50 border-white/20 dark:border-gray-700/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50"
               />
             </div>
 
-            <Button type="submit" disabled={loading.password}>
-              {loading.password ? (
-                <>
-                  <Loader2
-                    className="h-4 w-4 mr-2 animate-spin"
-                    aria-hidden="true"
-                  />
-                  Alterando...
-                </>
-              ) : (
-                "Alterar senha"
-              )}
-            </Button>
+            <div className="md:col-span-3">
+              <Button type="submit" disabled={loading.password}>
+                {loading.password ? (
+                  <>
+                    <Loader2
+                      className="h-4 w-4 mr-2 animate-spin"
+                      aria-hidden="true"
+                    />
+                    Alterando...
+                  </>
+                ) : (
+                  "Alterar senha"
+                )}
+              </Button>
+            </div>
           </form>
         </CardContent>
       </Card>
 
       {/* Zona de Perigo */}
-      <Card className="border-red-500">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-red-600">
-            <Trash2 className="h-5 w-5" aria-hidden="true" />
-            Zona de Perigo
+      <Card className="bg-gradient-to-br from-red-50/80 to-orange-50/60 dark:from-red-950/50 dark:to-orange-950/40 backdrop-blur-xl border-2 border-red-500/30 dark:border-red-500/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
+        <CardHeader className="border-b border-red-500/20 dark:border-red-500/30 bg-gradient-to-r from-red-600/10 to-orange-600/10 dark:from-red-500/20 dark:to-orange-500/20">
+          <CardTitle className="flex items-center gap-2">
+            <Trash2
+              className="h-5 w-5 text-red-600 dark:text-red-400"
+              aria-hidden="true"
+            />
+            <span className="bg-gradient-to-r from-red-600 to-orange-600 dark:from-red-400 dark:to-orange-400 bg-clip-text text-transparent">
+              Zona de Perigo
+            </span>
           </CardTitle>
           <CardDescription>
             Ações irreversíveis que afetam sua conta
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="pt-6">
           <div className="space-y-2">
             <p className="text-sm text-gray-600 dark:text-gray-400">
               Deletar sua conta removerá permanentemente todos os seus dados,
@@ -365,6 +412,7 @@ export default function SettingsPage() {
               value={deleteConfirmation}
               onChange={(e) => setDeleteConfirmation(e.target.value)}
               placeholder="Digite DELETAR"
+              className="bg-white/60 dark:bg-gray-800/50 border-white/20 dark:border-gray-700/50 backdrop-blur-sm focus:ring-2 focus:ring-red-500/50"
             />
           </div>
 
