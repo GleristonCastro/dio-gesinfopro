@@ -36,7 +36,7 @@ async function getActiveGoals(): Promise<Goal[]> {
       orderBy: {
         createdAt: "desc",
       },
-      take: 6, // Aumentei para 6 já que agora é grid 2 colunas
+      take: 3, // Limitando a 3 metas para o dashboard
       include: {
         transactions: {
           orderBy: {
