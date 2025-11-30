@@ -8,12 +8,14 @@ export function NotesWidget() {
   const { content, setContent, isLoading, isSaving } = useNotes();
 
   return (
-    <Card className="h-full">
-      <CardHeader className="pb-3">
+    <Card className="h-full bg-white dark:bg-linear-to-br dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-gray-200 dark:border-gray-800/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
+      <CardHeader className="pb-3 border-b border-gray-200 dark:border-gray-800/50 bg-gray-50 dark:bg-linear-to-r dark:from-yellow-600/10 dark:to-amber-600/10 dark:from-yellow-500/20 dark:to-amber-500/20">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <StickyNote className="h-4 w-4 text-yellow-600" />
-            <CardTitle className="text-base">Bloco de Notas</CardTitle>
+            <StickyNote className="h-4 w-4 text-yellow-600 dark:text-yellow-400" />
+            <CardTitle className="text-base bg-gradient-to-r from-yellow-600 to-amber-600 dark:from-yellow-400 dark:to-amber-400 bg-clip-text text-transparent">
+              Bloco de Notas
+            </CardTitle>
           </div>
           {isSaving && (
             <div className="flex items-center gap-1 text-xs text-muted-foreground">
@@ -23,7 +25,7 @@ export function NotesWidget() {
           )}
         </div>
       </CardHeader>
-      <CardContent>
+      <CardContent className="pt-6">
         {isLoading ? (
           <div className="flex items-center justify-center h-[200px]">
             <Loader2
