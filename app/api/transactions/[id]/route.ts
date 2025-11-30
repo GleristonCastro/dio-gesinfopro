@@ -5,7 +5,7 @@ import { headers } from "next/headers";
 
 export async function PUT(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await auth.api.getSession({
@@ -16,7 +16,7 @@ export async function PUT(
       return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
     }
 
-    const id = params.id;
+    const { id } = await params;
     const body = await req.json();
     const { description, amount, type, categoryId, date } = body;
 
@@ -64,7 +64,7 @@ export async function PUT(
 
 export async function DELETE(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await auth.api.getSession({
@@ -75,7 +75,7 @@ export async function DELETE(
       return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
     }
 
-    const id = params.id;
+    const { id } = await params;
 
     // Verificar se a transação pertence ao usuário
     const existingTransaction = await prisma.transaction.findUnique({
