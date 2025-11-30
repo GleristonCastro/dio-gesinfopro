@@ -114,15 +114,17 @@ export function ChatWidget({ compact = false }: ChatWidgetProps) {
   ];
 
   return (
-    <Card className="flex flex-col h-[calc(100vh-320px)]">
-      <CardHeader className="pb-3 shrink-0">
+    <Card className="flex flex-col h-[calc(100vh-320px)] bg-linear-to-br from-white/50 to-gray-50/30 dark:from-gray-900/40 dark:to-gray-950/60 backdrop-blur-sm border-white/20 dark:border-gray-800/50 shadow-xl">
+      <CardHeader className="p-4 shrink-0 border-b border-white/10 dark:border-gray-800/50">
         <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-blue-500 to-purple-600 text-white shadow-lg">
             <Bot className="h-4 w-4" />
           </div>
           <div>
-            <CardTitle className="text-base">FinBot</CardTitle>
-            <CardDescription className="text-xs">
+            <CardTitle className="text-base font-semibold bg-linear-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+              FinBot
+            </CardTitle>
+            <CardDescription className="text-xs text-gray-600 dark:text-gray-400">
               Seu assistente financeiro
             </CardDescription>
           </div>
@@ -130,7 +132,7 @@ export function ChatWidget({ compact = false }: ChatWidgetProps) {
       </CardHeader>
       <CardContent className="flex-1 flex flex-col p-4 pt-0 space-y-4 overflow-hidden">
         {/* Área de mensagens */}
-        <div className="flex-1 overflow-y-auto space-y-3 pr-2">
+        <div className="flex-1 overflow-y-auto space-y-3 pr-2 pt-5">
           {messages.map((message) => (
             <div
               key={message.id}
@@ -139,19 +141,25 @@ export function ChatWidget({ compact = false }: ChatWidgetProps) {
               }`}
             >
               {message.role === "assistant" && (
-                <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <Bot className="h-3 w-3" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-blue-500/20 to-purple-600/20 dark:from-blue-500/30 dark:to-purple-600/30 text-blue-600 dark:text-blue-400">
+                  <Bot className="h-6 w-6" />
                 </div>
               )}
               <div
-                className={`rounded-lg px-3 py-2 max-w-[85%] text-sm ${
+                className={`rounded-lg px-3 py-2 max-w-[85%] text-sm shadow-sm ${
                   message.role === "user"
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted"
+                    ? "bg-linear-to-br from-blue-500 to-purple-600 text-white shadow-md"
+                    : "bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-gray-100 backdrop-blur-sm border border-gray-300 dark:border-gray-700/50"
                 }`}
               >
                 <p className="whitespace-pre-wrap">{message.content}</p>
-                <span className="text-xs opacity-60 mt-1 block">
+                <span
+                  className={`text-xs mt-1 block ${
+                    message.role === "user"
+                      ? "opacity-80"
+                      : "opacity-60 text-gray-600 dark:text-gray-400"
+                  }`}
+                >
                   {message.timestamp.toLocaleTimeString("pt-BR", {
                     hour: "2-digit",
                     minute: "2-digit",
@@ -159,22 +167,22 @@ export function ChatWidget({ compact = false }: ChatWidgetProps) {
                 </span>
               </div>
               {message.role === "user" && (
-                <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-secondary">
-                  <User className="h-3 w-3" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 text-gray-700 dark:text-gray-300">
+                  <User className="h-6 w-6" />
                 </div>
               )}
             </div>
           ))}
           {isLoading && (
             <div className="flex gap-2 justify-start">
-              <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <Bot className="h-3 w-3" />
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-blue-500/20 to-purple-600/20 dark:from-blue-500/30 dark:to-purple-600/30 text-blue-600 dark:text-blue-400">
+                <Bot className="h-6 w-6" />
               </div>
-              <div className="rounded-lg px-3 py-2 bg-muted">
+              <div className="rounded-lg px-3 py-2 bg-gray-50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-300 dark:border-gray-700/50">
                 <div className="flex gap-1">
-                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/40 animate-bounce" />
-                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/40 animate-bounce [animation-delay:0.2s]" />
-                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/40 animate-bounce [animation-delay:0.4s]" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500 dark:bg-blue-400 animate-bounce" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500 dark:bg-blue-400 animate-bounce [animation-delay:0.2s]" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500 dark:bg-blue-400 animate-bounce [animation-delay:0.4s]" />
                 </div>
               </div>
             </div>
@@ -185,7 +193,9 @@ export function ChatWidget({ compact = false }: ChatWidgetProps) {
         {/* Ações rápidas - fixas na parte inferior */}
         {messages.length === 1 && (
           <div className="space-y-2 shrink-0">
-            <p className="text-xs text-muted-foreground">Exemplos:</p>
+            <p className="text-xs text-gray-600 dark:text-gray-400 font-medium">
+              Exemplos:
+            </p>
             <div className="flex flex-wrap gap-2">
               {quickActions.map((action, index) => (
                 <Button
@@ -193,7 +203,7 @@ export function ChatWidget({ compact = false }: ChatWidgetProps) {
                   variant="outline"
                   size="sm"
                   onClick={() => setInput(action)}
-                  className="text-xs h-7"
+                  className="text-xs h-7 bg-gray-50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-800/70 text-gray-700 dark:text-gray-300 backdrop-blur-sm"
                 >
                   {action}
                 </Button>
@@ -213,7 +223,7 @@ export function ChatWidget({ compact = false }: ChatWidgetProps) {
             onChange={(e) => setInput(e.target.value)}
             placeholder="Digite sua mensagem..."
             disabled={isLoading}
-            className="flex-1 h-9"
+            className="flex-1 h-9 bg-gray-50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-700/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50"
             autoFocus
             aria-label="Campo de mensagem"
           />
@@ -222,6 +232,7 @@ export function ChatWidget({ compact = false }: ChatWidgetProps) {
             disabled={isLoading || !input.trim()}
             size="sm"
             aria-label="Enviar mensagem"
+            className="bg-linear-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-md"
           >
             <Send className="h-4 w-4" aria-hidden="true" />
             <span className="sr-only">Enviar</span>
