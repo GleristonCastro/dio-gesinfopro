@@ -1,26 +1,202 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Backgrounds */
+    --background: 0 0% 100%; /* #ffffff - background branco puro */
+    --foreground: 222 47% 11%; /* #0f172a - texto principal */
+
+    --card: 216 33% 97%; /* #f5f7fa - cards cinza muito claro */
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 258 90% 66%; /* #8b5cf6 - roxo principal */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 214 32% 91%; /* #f1f5f9 - elementos secundários */
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 214 32% 91%; /* #f1f5f9 */
+    --muted-foreground: 215 16% 47%; /* #475569 */
+
+    --accent: 258 90% 66%; /* #8b5cf6 */
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%; /* #ef4444 */
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 216 33% 90%; /* #e8ecf1 - bordas para light mode */
+    --input: 216 33% 90%;
+    --ring: 258 90% 66%; /* #8b5cf6 */
+
+    --radius: 0.75rem;
+
+    /* Cores Adicionais para Gráficos e Estados */
+    --success: 158 64% 52%; /* #10b981 - verde */
+    --warning: 38 92% 50%; /* #f59e0b - laranja */
+    --info: 189 94% 43%; /* #06b6d4 - ciano */
+    --chart-1: 258 90% 66%; /* #8b5cf6 - roxo */
+    --chart-2: 158 64% 52%; /* #10b981 - verde */
+    --chart-3: 189 94% 43%; /* #06b6d4 - ciano */
+    --chart-4: 328 86% 70%; /* #f472b6 - rosa */
+    --chart-5: 38 92% 50%; /* #f59e0b - laranja */
+
+    /* Estados de Badges */
+    --badge-success: 158 64% 52%;
+    --badge-warning: 38 92% 50%;
+    --badge-error: 0 84% 60%;
+    --badge-info: 221 83% 53%;
+    --badge-qualified: 158 64% 52%;
+    --badge-contacted: 38 92% 50%;
+    --badge-new: 235 84% 71%;
+  }
+
+  .dark {
+    /* Backgrounds */
+    --background: 215 35% 4%; /* #0a0e14 - background principal muito escuro */
+    --foreground: 210 40% 98%; /* #f8fafc - texto principal */
+
+    --card: 220 26% 14%; /* #1a1f2e - cards com bom contraste */
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 26% 14%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 258 90% 66%; /* #8b5cf6 - roxo principal */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 220 20% 25%; /* #242b3d - elementos secundários */
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 20% 25%; /* #242b3d */
+    --muted-foreground: 215 20% 65%; /* #94a3b8 */
+
+    --accent: 258 90% 66%; /* #8b5cf6 - roxo para acentos */
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%; /* #ef4444 - vermelho */
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 20% 30%; /* #2d3548 - bordas sutis */
+    --input: 220 20% 30%;
+    --ring: 258 90% 66%; /* #8b5cf6 - focus ring roxo */
+
+    --radius: 0.75rem; /* 12px - border radius padrão */
+
+    /* Cores Adicionais para Gráficos e Estados */
+    --success: 158 64% 52%; /* #10b981 - verde */
+    --warning: 38 92% 50%; /* #f59e0b - laranja */
+    --info: 189 94% 43%; /* #06b6d4 - ciano */
+    --chart-1: 258 90% 66%; /* #8b5cf6 - roxo */
+    --chart-2: 158 64% 52%; /* #10b981 - verde */
+    --chart-3: 189 94% 43%; /* #06b6d4 - ciano */
+    --chart-4: 328 86% 70%; /* #f472b6 - rosa */
+    --chart-5: 38 92% 50%; /* #f59e0b - laranja */
+
+    /* Estados de Badges */
+    --badge-success: 158 64% 52%;
+    --badge-warning: 38 92% 50%;
+    --badge-error: 0 84% 60%;
+    --badge-info: 221 83% 53%;
+    --badge-qualified: 158 64% 52%;
+    --badge-contacted: 38 92% 50%;
+    --badge-new: 235 84% 71%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Acessibilidade: Screen reader only (conteúdo visível apenas para leitores de tela) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Melhorar indicadores de foco para acessibilidade */
+*:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Cards e Containers */
+.card {
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px 0 rgb(0 0 0 / 0.06);
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+}
+
+.dark .card {
+  box-shadow: 0 2px 8px 0 rgb(0 0 0 / 0.4), 0 1px 3px 0 rgb(0 0 0 / 0.5);
+  border: 1px solid hsl(var(--border));
+}
+
+/* Botões com Variantes */
+.btn-primary {
+  background: hsl(var(--primary));
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+/* Badges/Tags Coloridos */
+.badge-success {
+  background: hsl(var(--badge-success) / 0.1);
+  color: hsl(var(--badge-success));
+  border: 1px solid hsl(var(--badge-success) / 0.2);
+}
+
+.badge-warning {
+  background: hsl(var(--badge-warning) / 0.1);
+  color: hsl(var(--badge-warning));
+  border: 1px solid hsl(var(--badge-warning) / 0.2);
+}
+
+.badge-error {
+  background: hsl(var(--badge-error) / 0.1);
+  color: hsl(var(--badge-error));
+  border: 1px solid hsl(var(--badge-error) / 0.2);
+}
+
+.badge-info {
+  background: hsl(var(--badge-info) / 0.1);
+  color: hsl(var(--badge-info));
+  border: 1px solid hsl(var(--badge-info) / 0.2);
+}
+
+.badge-qualified {
+  background: hsl(var(--badge-qualified) / 0.1);
+  color: hsl(var(--badge-qualified));
+  border: 1px solid hsl(var(--badge-qualified) / 0.2);
+}
+
+.badge-contacted {
+  background: hsl(var(--badge-contacted) / 0.1);
+  color: hsl(var(--badge-contacted));
+  border: 1px solid hsl(var(--badge-contacted) / 0.2);
+}
+
+.badge-new {
+  background: hsl(var(--badge-new) / 0.1);
+  color: hsl(var(--badge-new));
+  border: 1px solid hsl(var(--badge-new) / 0.2);
+}
+
+/* Tabelas */
+.table-row:hover {
+  background: hsl(var(--muted) / 0.5);
+}
+
+.dark .table-row:hover {
+  background: hsl(220 20% 20%);
 }
