@@ -239,8 +239,8 @@ export default function ReportsPage() {
       <FinancialInsights months={period} />
 
       {/* Gráfico de evolução do saldo */}
-      <Card className="bg-gradient-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-white/20 dark:border-gray-800/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
-        <CardHeader className="border-b border-white/20 dark:border-gray-800/50 bg-gradient-to-r from-blue-600/10 to-cyan-600/10 dark:from-blue-500/20 dark:to-cyan-500/20">
+      <Card className="bg-white border border-gray-200 shadow-lg hover:shadow-xl dark:bg-linear-to-br dark:from-gray-900/90 dark:to-gray-950/80 dark:backdrop-blur-xl dark:border-gray-800/50 dark:shadow-2xl dark:hover:shadow-3xl transition-all duration-300">
+        <CardHeader className="border-b border-gray-100 dark:border-gray-800/50 bg-linear-to-r from-blue-50 to-cyan-50 dark:from-blue-500/20 dark:to-cyan-500/20">
           <CardTitle className="flex items-center gap-2">
             <TrendingUp className="h-5 w-5 text-blue-600 dark:text-blue-400" />
             <span className="bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent">
@@ -281,8 +281,8 @@ export default function ReportsPage() {
       {/* Gráficos lado a lado */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Receitas vs Despesas */}
-        <Card className="bg-gradient-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-white/20 dark:border-gray-800/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
-          <CardHeader className="border-b border-white/20 dark:border-gray-800/50 bg-gradient-to-r from-green-600/10 to-red-600/10 dark:from-green-500/20 dark:to-red-500/20">
+        <Card className="bg-white border border-gray-200 shadow-lg hover:shadow-xl dark:bg-linear-to-br dark:from-gray-900/90 dark:to-gray-950/80 dark:backdrop-blur-xl dark:border-gray-800/50 dark:shadow-2xl dark:hover:shadow-3xl transition-all duration-300">
+          <CardHeader className="border-b border-gray-100 dark:border-gray-800/50 bg-linear-to-r from-green-50 to-red-50 dark:from-green-500/20 dark:to-red-500/20">
             <CardTitle className="bg-gradient-to-r from-green-600 to-red-600 dark:from-green-400 dark:to-red-400 bg-clip-text text-transparent">
               Receitas vs Despesas
             </CardTitle>
@@ -313,8 +313,8 @@ export default function ReportsPage() {
         </Card>
 
         {/* Distribuição por Categoria */}
-        <Card className="bg-gradient-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-white/20 dark:border-gray-800/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
-          <CardHeader className="border-b border-white/20 dark:border-gray-800/50 bg-gradient-to-r from-purple-600/10 to-pink-600/10 dark:from-purple-500/20 dark:to-pink-500/20">
+        <Card className="bg-white border border-gray-200 shadow-lg hover:shadow-xl dark:bg-linear-to-br dark:from-gray-900/90 dark:to-gray-950/80 dark:backdrop-blur-xl dark:border-gray-800/50 dark:shadow-2xl dark:hover:shadow-3xl transition-all duration-300">
+          <CardHeader className="border-b border-gray-100 dark:border-gray-800/50 bg-linear-to-r from-purple-50 to-pink-50 dark:from-purple-500/20 dark:to-pink-500/20">
             <CardTitle className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
               Distribuição por Categoria
             </CardTitle>
