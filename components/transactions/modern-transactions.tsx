@@ -98,7 +98,7 @@ export function ModernTransactions({
             placeholder="Buscar por descrição ou categoria..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 pr-10 bg-gray-50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-700/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all duration-200"
+            className="pl-10 pr-10 bg-white border-gray-300 dark:bg-gray-800/50 dark:border-gray-700/50 dark:backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all duration-200"
           />
           {searchQuery && (
             <button
@@ -119,7 +119,7 @@ export function ModernTransactions({
               "transition-all duration-200 rounded-full",
               filterType === "ALL"
                 ? "bg-linear-to-r from-blue-600 to-purple-600 text-white shadow-lg hover:shadow-xl px-4 py-1.5 text-sm font-medium"
-                : "bg-gray-50 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700/50 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-gray-800/70 px-4 py-1.5 text-sm font-medium"
+                : "bg-white text-gray-700 border border-gray-300 dark:bg-gray-800/50 dark:text-gray-200 dark:border-gray-700/50 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-gray-800/70 px-4 py-1.5 text-sm font-medium"
             )}
           >
             Todas ({stats.total})
@@ -130,7 +130,7 @@ export function ModernTransactions({
               "transition-all duration-200 rounded-full",
               filterType === "INCOME"
                 ? "bg-linear-to-r from-green-600 to-emerald-600 text-white shadow-lg hover:shadow-xl px-4 py-1.5 text-sm font-medium"
-                : "bg-gray-50 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700/50 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-gray-800/70 px-4 py-1.5 text-sm font-medium"
+                : "bg-white text-gray-700 border border-gray-300 dark:bg-gray-800/50 dark:text-gray-200 dark:border-gray-700/50 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-gray-800/70 px-4 py-1.5 text-sm font-medium"
             )}
           >
             Receitas ({stats.income})
@@ -141,7 +141,7 @@ export function ModernTransactions({
               "transition-all duration-200 rounded-full",
               filterType === "EXPENSE"
                 ? "bg-linear-to-r from-red-600 to-rose-600 text-white shadow-lg hover:shadow-xl px-4 py-1.5 text-sm font-medium"
-                : "bg-gray-50 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700/50 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-gray-800/70 px-4 py-1.5 text-sm font-medium"
+                : "bg-white text-gray-700 border border-gray-300 dark:bg-gray-800/50 dark:text-gray-200 dark:border-gray-700/50 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-gray-800/70 px-4 py-1.5 text-sm font-medium"
             )}
           >
             Despesas ({stats.expense})
@@ -152,7 +152,7 @@ export function ModernTransactions({
               "transition-all duration-200 rounded-full",
               filterType === "RESERVE"
                 ? "bg-linear-to-r from-blue-600 to-cyan-600 text-white shadow-lg hover:shadow-xl px-4 py-1.5 text-sm font-medium"
-                : "bg-gray-50 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700/50 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-gray-800/70 px-4 py-1.5 text-sm font-medium"
+                : "bg-white text-gray-700 border border-gray-300 dark:bg-gray-800/50 dark:text-gray-200 dark:border-gray-700/50 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-gray-800/70 px-4 py-1.5 text-sm font-medium"
             )}
           >
             Reservas ({stats.reserve})
@@ -171,10 +171,10 @@ export function ModernTransactions({
 
       {/* Desktop Table View */}
       <div className="hidden md:block">
-        <Card className="overflow-hidden bg-linear-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border-white/20 dark:border-gray-800/50 shadow-2xl">
+        <Card className="overflow-hidden bg-white border border-gray-200 shadow-lg dark:bg-linear-to-br dark:from-gray-900/90 dark:to-gray-950/80 dark:backdrop-blur-xl dark:border-gray-800/50 dark:shadow-2xl">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="border-b border-white/20 dark:border-gray-800/50 bg-linear-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10">
+              <thead className="border-b border-gray-100 dark:border-gray-800/50 bg-linear-to-r from-blue-50 via-purple-50 to-pink-50 dark:from-blue-500/10 dark:via-purple-500/10 dark:to-pink-500/10">
                 <tr>
                   <th className="px-4 py-3 text-left text-sm font-semibold">
                     Descrição
@@ -303,7 +303,7 @@ export function ModernTransactions({
       {/* Mobile Card View */}
       <div className="md:hidden space-y-3">
         {filteredTransactions.length === 0 ? (
-          <Card className="p-8 text-center bg-linear-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border-white/20 dark:border-gray-800/50 shadow-lg">
+          <Card className="p-8 text-center bg-white border border-gray-200 shadow-lg dark:bg-linear-to-br dark:from-gray-900/90 dark:to-gray-950/80 dark:backdrop-blur-xl dark:border-gray-800/50">
             <p className="text-sm text-muted-foreground">
               Nenhuma transação encontrada
             </p>
