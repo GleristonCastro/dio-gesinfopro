@@ -181,7 +181,7 @@ export function GoalCard({
   return (
     <Card
       className={cn(
-        "group relative overflow-hidden bg-gradient-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-white/20 dark:border-gray-800/50 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-1",
+        "group relative overflow-hidden bg-white border border-gray-200 shadow-lg hover:shadow-xl dark:bg-linear-to-br dark:from-gray-900/90 dark:to-gray-950/80 dark:backdrop-blur-xl dark:border-gray-800/50 dark:shadow-2xl dark:hover:shadow-3xl transition-all duration-300 hover:-translate-y-1",
         onClick && "cursor-pointer",
         "animate-in fade-in-50 slide-in-from-bottom-2 duration-300",
         className
