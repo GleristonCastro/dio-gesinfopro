@@ -162,8 +162,8 @@ export default function SettingsPage() {
       {/* Grid de 2 colunas em desktop */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Aparência */}
-        <Card className="bg-gradient-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-white/20 dark:border-gray-800/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
-          <CardHeader className="border-b border-white/20 dark:border-gray-800/50 bg-gradient-to-r from-purple-600/10 to-pink-600/10 dark:from-purple-500/20 dark:to-pink-500/20">
+        <Card className="bg-white border border-gray-200 shadow-lg hover:shadow-xl dark:bg-linear-to-br dark:from-gray-900/90 dark:to-gray-950/80 dark:backdrop-blur-xl dark:border-gray-800/50 dark:shadow-2xl dark:hover:shadow-3xl transition-all duration-300">
+          <CardHeader className="border-b border-gray-100 dark:border-gray-800/50 bg-linear-to-r from-purple-50 to-pink-50 dark:from-purple-500/20 dark:to-pink-500/20">
             <CardTitle className="flex items-center gap-2">
               <Palette
                 className="h-5 w-5 text-purple-600 dark:text-purple-400"
@@ -187,8 +187,8 @@ export default function SettingsPage() {
         </Card>
 
         {/* Perfil */}
-        <Card className="bg-gradient-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-white/20 dark:border-gray-800/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
-          <CardHeader className="border-b border-white/20 dark:border-gray-800/50 bg-gradient-to-r from-blue-600/10 to-cyan-600/10 dark:from-blue-500/20 dark:to-cyan-500/20">
+        <Card className="bg-white border border-gray-200 shadow-lg hover:shadow-xl dark:bg-linear-to-br dark:from-gray-900/90 dark:to-gray-950/80 dark:backdrop-blur-xl dark:border-gray-800/50 dark:shadow-2xl dark:hover:shadow-3xl transition-all duration-300">
+          <CardHeader className="border-b border-gray-100 dark:border-gray-800/50 bg-linear-to-r from-blue-50 to-cyan-50 dark:from-blue-500/20 dark:to-cyan-500/20">
             <CardTitle className="flex items-center gap-2">
               <User
                 className="h-5 w-5 text-blue-600 dark:text-blue-400"
@@ -216,7 +216,7 @@ export default function SettingsPage() {
                   }
                   placeholder="Seu nome"
                   required
-                  className="bg-white/60 dark:bg-gray-800/50 border-white/20 dark:border-gray-700/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50"
+                  className="bg-white border-gray-300 dark:border-gray-700/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50"
                 />
               </div>
 
@@ -233,7 +233,7 @@ export default function SettingsPage() {
                   }
                   placeholder="seu@email.com"
                   required
-                  className="bg-white/60 dark:bg-gray-800/50 border-white/20 dark:border-gray-700/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50"
+                  className="bg-white border-gray-300 dark:border-gray-700/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50"
                 />
               </div>
 
@@ -260,8 +260,8 @@ export default function SettingsPage() {
       </div>
 
       {/* Segurança - card largo */}
-      <Card className="bg-gradient-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-white/20 dark:border-gray-800/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
-        <CardHeader className="border-b border-white/20 dark:border-gray-800/50 bg-gradient-to-r from-orange-600/10 to-amber-600/10 dark:from-orange-500/20 dark:to-amber-500/20">
+      <Card className="bg-white border border-gray-200 shadow-lg hover:shadow-xl dark:bg-linear-to-br dark:from-gray-900/90 dark:to-gray-950/80 dark:backdrop-blur-xl dark:border-gray-800/50 dark:shadow-2xl dark:hover:shadow-3xl transition-all duration-300">
+        <CardHeader className="border-b border-gray-100 dark:border-gray-800/50 bg-linear-to-r from-orange-50 to-amber-50 dark:from-orange-500/20 dark:to-amber-500/20">
           <CardTitle className="flex items-center gap-2">
             <Lock
               className="h-5 w-5 text-orange-600 dark:text-orange-400"
@@ -294,7 +294,7 @@ export default function SettingsPage() {
                 }
                 placeholder="••••••••"
                 required
-                className="bg-white/60 dark:bg-gray-800/50 border-white/20 dark:border-gray-700/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50"
+                className="bg-white border-gray-300 dark:border-gray-700/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50"
               />
             </div>
 
@@ -315,7 +315,7 @@ export default function SettingsPage() {
                 placeholder="••••••••"
                 required
                 minLength={6}
-                className="bg-white/60 dark:bg-gray-800/50 border-white/20 dark:border-gray-700/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50"
+                className="bg-white border-gray-300 dark:border-gray-700/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50"
               />
             </div>
 
@@ -336,7 +336,7 @@ export default function SettingsPage() {
                 placeholder="••••••••"
                 required
                 minLength={6}
-                className="bg-white/60 dark:bg-gray-800/50 border-white/20 dark:border-gray-700/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50"
+                className="bg-white border-gray-300 dark:border-gray-700/50 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50"
               />
             </div>
 
@@ -412,7 +412,7 @@ export default function SettingsPage() {
               value={deleteConfirmation}
               onChange={(e) => setDeleteConfirmation(e.target.value)}
               placeholder="Digite DELETAR"
-              className="bg-white/60 dark:bg-gray-800/50 border-white/20 dark:border-gray-700/50 backdrop-blur-sm focus:ring-2 focus:ring-red-500/50"
+              className="bg-white border-gray-300 dark:border-gray-700/50 backdrop-blur-sm focus:ring-2 focus:ring-red-500/50"
             />
           </div>
 
