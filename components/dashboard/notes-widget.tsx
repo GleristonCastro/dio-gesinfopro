@@ -8,8 +8,8 @@ export function NotesWidget() {
   const { content, setContent, isLoading, isSaving } = useNotes();
 
   return (
-    <Card className="h-full bg-white dark:bg-linear-to-br dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-gray-200 dark:border-gray-800/50 shadow-2xl hover:shadow-3xl transition-all duration-300">
-      <CardHeader className="pb-3 border-b border-gray-200 dark:border-gray-800/50 bg-gray-50 dark:bg-linear-to-r dark:from-yellow-600/10 dark:to-amber-600/10 dark:from-yellow-500/20 dark:to-amber-500/20">
+    <Card className="h-full bg-white border border-gray-200 shadow-lg hover:shadow-xl dark:bg-linear-to-br dark:from-gray-900/90 dark:to-gray-950/80 dark:backdrop-blur-xl dark:border-gray-800/50 dark:shadow-2xl dark:hover:shadow-3xl transition-all duration-300">
+      <CardHeader className="pb-3 border-b border-gray-100 dark:border-gray-800/50 bg-linear-to-r from-yellow-50 to-amber-50 dark:from-yellow-500/20 dark:to-amber-500/20">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <StickyNote className="h-4 w-4 text-yellow-600 dark:text-yellow-400" />
