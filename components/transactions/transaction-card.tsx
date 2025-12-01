@@ -21,7 +21,7 @@ export interface TransactionCardProps {
 
 const typeStyles = {
   INCOME: {
-    bg: "bg-linear-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80",
+    bg: "bg-white border-gray-200 dark:bg-linear-to-br dark:from-gray-900/90 dark:to-gray-950/80",
     iconBg: "bg-green-500/10 dark:bg-green-500/20",
     iconColor: "text-green-600 dark:text-green-400",
     amountColor: "text-green-600 dark:text-green-400",
@@ -29,7 +29,7 @@ const typeStyles = {
     sign: "+",
   },
   EXPENSE: {
-    bg: "bg-linear-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80",
+    bg: "bg-white border-gray-200 dark:bg-linear-to-br dark:from-gray-900/90 dark:to-gray-950/80",
     iconBg: "bg-red-500/10 dark:bg-red-500/20",
     iconColor: "text-red-600 dark:text-red-400",
     amountColor: "text-red-600 dark:text-red-400",
@@ -37,7 +37,7 @@ const typeStyles = {
     sign: "-",
   },
   RESERVE: {
-    bg: "bg-linear-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80",
+    bg: "bg-white border-gray-200 dark:bg-linear-to-br dark:from-gray-900/90 dark:to-gray-950/80",
     iconBg: "bg-blue-500/10 dark:bg-blue-500/20",
     iconColor: "text-blue-600 dark:text-blue-400",
     amountColor: "text-blue-600 dark:text-blue-400",
@@ -78,7 +78,7 @@ export function TransactionCard({
         "group relative overflow-hidden",
         styles.border,
         styles.bg,
-        "backdrop-blur-xl shadow-lg hover:shadow-xl",
+        "shadow-lg hover:shadow-xl dark:backdrop-blur-xl",
         "transition-all duration-300",
         onClick && "cursor-pointer hover:shadow-2xl hover:-translate-y-0.5",
         "animate-in fade-in-50 slide-in-from-bottom-2 duration-300",
