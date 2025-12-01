@@ -87,11 +87,11 @@ export function StatCard({
   return (
     <Card
       className={cn(
-        "bg-gradient-to-br from-white/80 to-gray-50/60 dark:from-gray-900/90 dark:to-gray-950/80 backdrop-blur-xl border border-white/20 dark:border-gray-800/50 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-1 group cursor-default",
+        "bg-white border border-gray-200 shadow-lg hover:shadow-xl dark:bg-linear-to-br dark:from-gray-900/90 dark:to-gray-950/80 dark:backdrop-blur-xl dark:border-gray-800/50 dark:shadow-2xl dark:hover:shadow-3xl transition-all duration-300 hover:-translate-y-1 group cursor-default",
         className
       )}
     >
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3 border-b border-white/20 dark:border-gray-800/50 bg-gradient-to-r from-white/50 to-gray-50/30 dark:from-gray-800/50 dark:to-gray-900/30">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3 border-b border-gray-100 dark:border-gray-800/50 bg-gradient-to-r from-gray-50 to-white dark:from-gray-800/50 dark:to-gray-900/30">
         <CardTitle className="text-sm font-medium text-gray-700 dark:text-gray-300">
           {title}
         </CardTitle>
