@@ -114,14 +114,14 @@ export function ChatWidget({ compact = false }: ChatWidgetProps) {
   ];
 
   return (
-    <Card className="flex flex-col h-[calc(100vh-320px)] bg-linear-to-br from-white/50 to-gray-50/30 dark:from-gray-900/40 dark:to-gray-950/60 backdrop-blur-sm border-white/20 dark:border-gray-800/50 shadow-xl">
-      <CardHeader className="p-4 shrink-0 border-b border-white/10 dark:border-gray-800/50">
+    <Card className="flex flex-col h-[calc(100vh-320px)] bg-white border border-gray-200 shadow-lg dark:bg-linear-to-br dark:from-gray-900/40 dark:to-gray-950/60 dark:backdrop-blur-sm dark:border-gray-800/50 dark:shadow-xl">
+      <CardHeader className="p-4 shrink-0 border-b border-gray-100 dark:border-gray-800/50">
         <div className="flex items-center gap-2">
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-blue-500 to-purple-600 text-white shadow-lg">
             <Bot className="h-4 w-4" />
           </div>
           <div>
-            <CardTitle className="text-base font-semibold bg-linear-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+            <CardTitle className="text-base font-semibold text-gray-900 dark:bg-linear-to-r dark:from-white dark:to-gray-300 dark:bg-clip-text dark:text-transparent">
               FinBot
             </CardTitle>
             <CardDescription className="text-xs text-gray-600 dark:text-gray-400">
